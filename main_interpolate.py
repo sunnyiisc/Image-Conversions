@@ -15,33 +15,23 @@ from matplotlib import pyplot as plt
 from image_interpolation import *
 
 ...
-'''Lena Image Import'''
-img = np.array( Image.open('./Image_Samples/lena.tiff') )
-np.save('lena.npy', img)
+img = np.array( Image.open('./Image_Samples/lena_color.tiff') )
 
-factor = 8
+factor = int( input('Enter the factor by which you want to interpolate: ') )
 
-img_interpol = factor * factor * np.absolute( img_interpol(img, factor) )
+num_band = img.shape[2]
+img_interpol = np.zeros((factor*img.shape[0], factor*img.shape[1], img.shape[2]), dtype=img.dtype)
 
-plt.subplot(1,2,1)
-plt.pcolormesh(img, shading='auto')
-#plt.invert_yaxis()
-plt.colorbar()
-plt.subplot(1,2,2)
-plt.pcolormesh(img_interpol, shading='auto')
-#plt.invert_yaxis()
-plt.colorbar()
-plt.show()
+for b in range(num_band):
+    img_interpol[:,:,b] = img_interpolate(img[:,:,b], factor)
+
+
+print('Input Image Size =', img.shape[0:2])
+print('Interpolated Image Size =', img_interpol.shape[0:2], '=', img.shape[0:2],'*',factor)
+
+img_org = Image.fromarray(img)
+img_org.show()
 
 img_int = Image.fromarray(img_interpol)
-img_int.save("lena_interpol.tif")
+img_int.save("./Image_Results/lena_interpol.tiff")
 img_int.show()
-
-x = np.linspace(0, len(img[:]) - 1, num=len(img_interpol[:]))
-plt.plot( 10 * np.log10( img[128,:] ), 'o' )
-plt.plot(x, 10 * np.log10( img_interpol[(128*factor),:] ) )
-plt.title('Centre Row')
-plt.xlabel('Pixel Number')
-plt.ylabel('Amplitude')
-plt.grid()
-plt.show()
