@@ -14,12 +14,12 @@ from scipy import ndimage, interpolate, signal
 ...
 
 ...
-def img_interpol(img, factor):
+def img_interpolate(img, factor):
     azi_x = img.shape[0]
     rng_y = img.shape[1]
     x = np.linspace (0, (azi_x - 1), num=azi_x)
     y = np.linspace (0, (rng_y - 1), num=rng_y)
-    f = interpolate.interp2d(x, y, img, kind='quintic')
+    f = interpolate.interp2d(x, y, img, kind='linear')
 
     xx = np.linspace (0, (azi_x - 1), num=(factor*azi_x))
     yy = np.linspace (0, (rng_y - 1), num=(factor*rng_y))
