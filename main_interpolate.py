@@ -1,6 +1,6 @@
 """
 Created on 2022, 23 Aug (23/08/22) at 20:10
-    Title: main_interpolate.py - ...
+    Title: main_interpolate.py - Interpolating the input multi-band image of some size by a given factor
     Description:
         -   ...
 @author: Supantha Sen, sunnymac, IISc Bangalore
@@ -27,11 +27,19 @@ for b in range(num_band):
 
 
 print('Input Image Size =', img.shape[0:2])
-print('Interpolated Image Size =', img_interpol.shape[0:2], '=', img.shape[0:2],'*',factor)
+print('Interpolated Image Size =', factor,'*',img.shape[0:2], '=', img_interpol.shape[0:2])
 
-img_org = Image.fromarray(img)
-img_org.show()
+plt.subplot(1,2,1)
+plt.imshow(img)
+plt.title('Original Image')
+plt.subplot(1,2,2)
+plt.imshow(img_interpol)
+plt.title("Interpolated Image by factor of %d" %(factor))
+plt.show()
+
+# img_org = Image.fromarray(img)
+# img_org.show()
 
 img_int = Image.fromarray(img_interpol)
 img_int.save("./Image_Results/lena_interpol.tiff")
-img_int.show()
+# img_int.show()
