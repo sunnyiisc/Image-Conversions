@@ -27,7 +27,7 @@ Result on Lena Image:
 Image interpolation can be used to increase the size of an image.
 
 - Function for Image Interpolation. [click here](image_interpolation.py)
-- Code for interpolation of RGB 'Lena' Image by some factor. - Function for RGB to Gray. [click here](main_interpolation.py)
+- Code for interpolation of RGB 'Lena' Image by some factor. - Function for RGB to Gray. [click here](main_interpolate.py)
 
 Result on Lena Image for interpolation with a factor of 8:
 ![interpolation_scipy](https://user-images.githubusercontent.com/47363228/186732698-db0e9fd8-9f7a-4a23-8c5c-ecc4a2095e15.png)
