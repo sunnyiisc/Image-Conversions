@@ -25,7 +25,7 @@ plt.title('Input Color Image')
 
 plt.subplot(1,2,2)
 plt.imshow(img_lena_gray, cmap='gray')
-plt.title("Gray Lena Image")
+plt.title("Output Grayscale Image")
 plt.show()
 
 img_gray = Image.fromarray(img_lena_gray)
