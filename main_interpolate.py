@@ -31,6 +31,7 @@ else:
         img_interpol[:,:,b] = img_interpolate(img[:,:,b], factor, inter_type)
 
 
+#### Plotting and Printing Results ####
 print('Input Image Size =', img.shape[0:2])
 print('Interpolated Image Size =', factor,'*',img.shape[0:2], '=', img_interpol.shape[0:2])
 
